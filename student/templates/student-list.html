@@ -1,0 +1,30 @@
+<html>
+<body>
+<a href="/add-student">Add Student</a>
+
+{% if student_list %}
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            {% for st in student_list %}
+                <tr>
+                    <td>{{ st.name}}</td>
+                    <td>{{ st.age}}</td>
+                    <td>{{ st.address }}</td>
+                    <td>{{ st.phone_number }}</td>
+                    <td><a href="{{ url_for('edit_student', student_id=st.id) }}">Edit</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    No Student Data
+{% endif %}
+</body>
+</html>
